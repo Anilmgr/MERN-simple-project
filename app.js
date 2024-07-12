@@ -5,10 +5,13 @@ import morgan from "morgan";
 import jobRouter from './routes/jobRouter.js';
 import authRouter from './routes/authRouter.js';
 import mongoose from "mongoose";
-import errorHandler from './middleware/errorHandler.js';
+import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js';
+import authMiddleware from './middleware/authMiddleware.js';
+import cookieParser from 'cookie-parser';
 
 let app = express();
 
+app.use(cookieParser())
 app.use(express.json());
 
 if (process.env.NODE_ENV === "development") {
@@ -16,7 +19,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 // Routers
-app.use("/api/v1/jobs", jobRouter);
+app.use("/api/v1/jobs",authMiddleware, jobRouter);
 
 app.use("/api/v1/auth", authRouter);
 
@@ -24,7 +27,7 @@ app.use("*", (req, res) => {
     res.status(404).json({ message: "Requested uri not found" });
 });
 
-app.use(errorHandler)
+app.use(errorHandlerMiddleware)
 
 
 const PORT = process.env.PORT || 3000;
