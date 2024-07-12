@@ -6,7 +6,7 @@ import {
     getSingleJob,
     updateJob,
 } from "../controllers/jobController.js";
-import {validateJobInput, validateIdParam} from '../middleware/validators.js';
+import {validateJobInput, validateIdParam} from '../middleware/validationMiddleware.js';
 const router = Router();
 
 router.route("/").get(getAllJobs).post(validateJobInput, createJob);
