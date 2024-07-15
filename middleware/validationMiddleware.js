@@ -81,3 +81,18 @@ export const validateLoginInput = withValidationErrors([
         .isLength({ min: 8 })
         .withMessage("Password must be at least 8 character!"),
 ]);
+
+export const validateUpdateUserInput = withValidationErrors([
+    body("name").notEmpty().withMessage("Name is required!"),
+    body("email")
+        .notEmpty()
+        .withMessage("Email is required!")
+        .isEmail()
+        .withMessage("Invalid email format")
+        .custom(async (email) => {
+            const user = await User.findOne({ email });
+            if (user && user._id.toString() !== req.user.userId) throw new BadRequestError("Email already exist!");
+        }),
+    body("location").notEmpty().withMessage("Location is required!"),
+    body("lastName").notEmpty().withMessage("Last Name is required!"),
+]);
