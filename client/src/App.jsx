@@ -21,7 +21,11 @@ const router = createBrowserRouter([
       },
       {
         path:'register',
-        element: <Register/>
+        element: <Register/>,
+        action:()=>{
+          console.log('Hello World!');
+          return null;
+        }
       },
       {
         path:'login',
