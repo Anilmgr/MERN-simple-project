@@ -5,8 +5,8 @@ const FormRowSelect = ({name, labelText, list, defaultValue = ""}) => {
                 {labelText || name}
             </label>
             <select
-                name="name"
-                id="name"
+                name={name}
+                id={name}
                 className="form-select"
                 defaultValue={defaultValue}
             >
