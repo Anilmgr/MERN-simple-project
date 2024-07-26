@@ -1,5 +1,5 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import { AddJob, Admin, AllJobs, DashboardLayout, Error, HomeLayout, Landing, Login, Profile, Register, Stats } from './pages'
+import { AddJob, Admin, AllJobs, DashboardLayout, EditJob, Error, HomeLayout, Landing, Login, Profile, Register, Stats } from './pages'
 import { action as registerAction } from './pages/Register';
 import { action as loginAction } from './pages/Login';
 import { action as addJobAction } from './pages/AddJob';
@@ -60,6 +60,11 @@ const router = createBrowserRouter([
           {
             path:'admin',
             element: <Admin/>
+          },
+          {
+            path:'edit-job',
+            element: <EditJob/>,
+            loader: jobLoader
           },
         ]
       },
