@@ -3,8 +3,10 @@ import { AddJob, Admin, AllJobs, DashboardLayout, EditJob, Error, HomeLayout, La
 import { action as registerAction } from './pages/Register';
 import { action as loginAction } from './pages/Login';
 import { action as addJobAction } from './pages/AddJob';
+import { action as editJobAction } from './pages/EditJob';
 import {loader as dashboardLoader} from './pages/DashboardLayout';
 import {loader as jobLoader} from './pages/AllJobs';
+import {loader as editJobLoader} from './pages/EditJob';
 
 export const checkDefaultTheme = () =>{
   const isDarkTheme = localStorage.getItem('darkTheme') === 'true';
@@ -62,9 +64,10 @@ const router = createBrowserRouter([
             element: <Admin/>
           },
           {
-            path:'edit-job',
+            path:'edit-job/:id',
             element: <EditJob/>,
-            loader: jobLoader
+            loader: editJobLoader,
+            action:editJobAction,
           },
         ]
       },
