@@ -2,6 +2,8 @@ import { toast } from "react-toastify";
 import customFetch from "../utils/customFetch";
 import { redirect, useLoaderData } from "react-router-dom";
 import Wrapper from "../assets/wrappers/StatsContainer";
+import { StatItem } from "../components";
+import { FaCalendarCheck, FaSuitcaseRolling } from "react-icons/fa";
 
 export const loader = async () => {
     try {
@@ -17,7 +19,8 @@ const Admin = () => {
   const {users, jobs} = useLoaderData();
     return (
     <Wrapper>
-      <h1>admin page</h1>
+      <StatItem title="Current Users" count={users} color="#e9b949" bcg="#fcefc7" icon={<FaSuitcaseRolling/>}/>
+      <StatItem title="Total Jobs" count={jobs} color="#647ace" bcg="#e0e8f9" icon={<FaCalendarCheck/>}/>
     </Wrapper>
     )
 };
