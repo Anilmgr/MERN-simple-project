@@ -9,8 +9,12 @@ import mongoose from "mongoose";
 import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js';
 import {authenticatedUser} from './middleware/authMiddleware.js';
 import cookieParser from 'cookie-parser';
+import path, {dirname} from 'path';
+import { fileURLToPath } from 'url';
 
 let app = express();
+const __dirname = dirname(fileURLToPath(import.meta.url))
+app.use(express.static(path.resolve(__dirname,'./public')))
 
 app.use(cookieParser())
 app.use(express.json());
