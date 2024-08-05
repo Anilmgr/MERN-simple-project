@@ -16,13 +16,25 @@ export const loader = async () => {
 };
 
 const Admin = () => {
-  const {users, jobs} = useLoaderData();
+    const { users, jobs } = useLoaderData();
     return (
-    <Wrapper>
-      <StatItem title="Current Users" count={users} color="#e9b949" bcg="#fcefc7" icon={<FaSuitcaseRolling/>}/>
-      <StatItem title="Total Jobs" count={jobs} color="#647ace" bcg="#e0e8f9" icon={<FaCalendarCheck/>}/>
-    </Wrapper>
-    )
+        <Wrapper>
+            <StatItem
+                title="Current Users"
+                count={users}
+                color="#e9b949"
+                bcg="#fcefc7"
+                icon={<FaSuitcaseRolling />}
+            />
+            <StatItem
+                title="Total Jobs"
+                count={jobs}
+                color="#647ace"
+                bcg="#e0e8f9"
+                icon={<FaCalendarCheck />}
+            />
+        </Wrapper>
+    );
 };
 
 export default Admin;
