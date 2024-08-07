@@ -41,6 +41,10 @@ app.use("/api/v1/users", authenticatedUser, userRouter);
 
 app.use("/api/v1/auth", authRouter);
 
+app.use("*",(req,res)=>{
+    res.sendFile(path.resolve(__dirname,'./public/index.html'))
+})
+
 app.use("*", (req, res) => {
     res.status(404).json({ message: "Requested uri not found" });
 });
