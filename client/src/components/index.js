@@ -12,3 +12,4 @@ export { default as Job } from "./Job";
 export { default as StatItem } from "./StatItem";
 export { default as SubmitBtn } from "./SubmitBtn";
 export { default as ChartsContainer } from "./ChartsContainer";
+export { default as PageBtnContainer } from "./PageBtnContainer";
